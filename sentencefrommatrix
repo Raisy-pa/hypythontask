@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <ctype.h>
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    char matrix[n][m + 1];
+    for (int i = 0; i < n; i++) {
+        scanf("%s", matrix[i]);
+    }
+    char result[1000];
+
+    int resultIndex = 0;
+    for (int j = 0; j < m; j++) {
+        for (int i = 0; i < n; i++) {
+            char Charcurrent = matrix[i][j];
+            if (isalnum(Charcurrent) || (resultIndex > 0 && result[resultIndex - 1] != ' ')) {
+                result[resultIndex++] = Charcurrent;
+            } else {
+                result[resultIndex++] = ' ';
+            }
+        }
+
+        result[resultIndex++] = ' ';
+    }
+    result[resultIndex] = '\0';
+    printf("%s\n", result);
+
+    return 0;
+}
